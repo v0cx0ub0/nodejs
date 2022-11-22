@@ -6,6 +6,6 @@ WORKDIR node-express-hello-world
 
 RUN npm install
 
-EXPOSE 4201
+EXPOSE 4200
 
 CMD ["npm", "start"]
