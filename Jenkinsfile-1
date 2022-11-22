@@ -1,0 +1,15 @@
+pipeline {
+  agent any
+  stages {
+    stage('cleanup') {
+      steps {
+        sh 'docker system prune -a --volumes --force'
+      }
+    }
+    stage('build image') {
+      steps {
+        sh 'docker build -t nodejs1:1.0 .'
+      }
+    }
+  }
+}
