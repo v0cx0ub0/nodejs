@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  options {
+    checkoutToSubdirectory("codeBase")
+  }
   stages {
     stage('cleanup') {
       steps {
@@ -8,7 +11,9 @@ pipeline {
     }
     stage('build image') {
       steps {
-        sh 'docker build -t nodejs1:1.0 .'
+        dir("codeBase") {
+          sh 'docker create --name myproject -p 4201:3000 .'
+        }
       }
     }
   }
